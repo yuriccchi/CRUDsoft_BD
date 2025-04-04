@@ -38,3 +38,4 @@ C:\Users\julia\source\repos\ViewTree\ViewTree\obj\Debug\net8.0-windows\ViewTree.
 C:\Users\julia\source\repos\ViewTree\ViewTree\obj\Debug\net8.0-windows\ViewTree.genruntimeconfig.cache
 C:\Users\julia\source\repos\ViewTree\ViewTree\obj\Debug\net8.0-windows\ref\ViewTree.dll
 C:\Users\julia\source\repos\ViewTree\ViewTree\obj\Debug\net8.0-windows\ViewTree.PlantForm.resources
+C:\Users\julia\source\repos\ViewTree\ViewTree\obj\Debug\net8.0-windows\ViewTree.sourcelink.json

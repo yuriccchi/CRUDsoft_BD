@@ -24,12 +24,12 @@ namespace ViewTree
                 .ToList();
 
             cmbFamily.DataSource = familyList;
-            cmbFamily.DisplayMember = "FamilyName";
-            cmbFamily.ValueMember = "FamilyID";
+            cmbFamily.DisplayMember = "Name";
+            cmbFamily.ValueMember = "ID";
 
-            if (PlantSpecies.SpeciesID != 0)
+            if (PlantSpecies.FamilyID != 0)
             {
-                cmbFamily.SelectedValue = PlantSpecies.SpeciesID;
+                cmbFamily.SelectedValue = PlantSpecies.FamilyID;
             }
         }
 
@@ -38,6 +38,11 @@ namespace ViewTree
             if (string.IsNullOrWhiteSpace(txtSpeciesName.Text))
             {
                 MessageBox.Show("The name cannot be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (cmbFamily.SelectedValue == null)
+            {
+                MessageBox.Show("Please select a family", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

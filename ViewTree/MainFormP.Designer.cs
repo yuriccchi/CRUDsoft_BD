@@ -55,8 +55,11 @@
             // 
             trvPlants.AllowDrop = true;
             trvPlants.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            trvPlants.HideSelection = false;
+            trvPlants.LabelEdit = true;
             trvPlants.Location = new Point(12, 73);
             trvPlants.Name = "trvPlants";
+            trvPlants.ShowNodeToolTips = true;
             trvPlants.Size = new Size(560, 376);
             trvPlants.TabIndex = 1;
             // 

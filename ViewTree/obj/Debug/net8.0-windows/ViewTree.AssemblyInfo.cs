@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ViewTree")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ba1ca5004650a9c51c25ac4a55e37158d755b216")]
 [assembly: System.Reflection.AssemblyProductAttribute("ViewTree")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ViewTree")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

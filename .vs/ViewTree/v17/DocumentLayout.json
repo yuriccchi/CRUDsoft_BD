@@ -3,24 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\julia\\source\\repos\\ViewTree\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3BB501E4-EB0D-4D0F-9BC0-BE45C5485348}|ViewTree\\ViewTree.csproj|c:\\users\\julia\\source\\repos\\viewtree\\viewtree\\mainformp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{3BB501E4-EB0D-4D0F-9BC0-BE45C5485348}|ViewTree\\ViewTree.csproj|c:\\users\\julia\\source\\repos\\viewtree\\viewtree\\mainformp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3BB501E4-EB0D-4D0F-9BC0-BE45C5485348}|ViewTree\\ViewTree.csproj|solutionrelative:viewtree\\mainformp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3BB501E4-EB0D-4D0F-9BC0-BE45C5485348}|ViewTree\\ViewTree.csproj|C:\\Users\\julia\\source\\repos\\ViewTree\\viewtree\\mainformp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{3BB501E4-EB0D-4D0F-9BC0-BE45C5485348}|ViewTree\\ViewTree.csproj|solutionrelative:viewtree\\mainformp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3BB501E4-EB0D-4D0F-9BC0-BE45C5485348}|ViewTree\\ViewTree.csproj|c:\\users\\julia\\source\\repos\\viewtree\\viewtree\\plantform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3BB501E4-EB0D-4D0F-9BC0-BE45C5485348}|ViewTree\\ViewTree.csproj|solutionrelative:viewtree\\plantform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3BB501E4-EB0D-4D0F-9BC0-BE45C5485348}|ViewTree\\ViewTree.csproj|c:\\users\\julia\\source\\repos\\viewtree\\viewtree\\speciesform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3BB501E4-EB0D-4D0F-9BC0-BE45C5485348}|ViewTree\\ViewTree.csproj|solutionrelative:viewtree\\speciesform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3BB501E4-EB0D-4D0F-9BC0-BE45C5485348}|ViewTree\\ViewTree.csproj|c:\\users\\julia\\source\\repos\\viewtree\\viewtree\\speciesform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{3BB501E4-EB0D-4D0F-9BC0-BE45C5485348}|ViewTree\\ViewTree.csproj|solutionrelative:viewtree\\speciesform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3BB501E4-EB0D-4D0F-9BC0-BE45C5485348}|ViewTree\\ViewTree.csproj|c:\\users\\julia\\source\\repos\\viewtree\\viewtree\\mainformp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3BB501E4-EB0D-4D0F-9BC0-BE45C5485348}|ViewTree\\ViewTree.csproj|solutionrelative:viewtree\\mainformp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3BB501E4-EB0D-4D0F-9BC0-BE45C5485348}|ViewTree\\ViewTree.csproj|c:\\users\\julia\\source\\repos\\viewtree\\viewtree\\models\\tree.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3BB501E4-EB0D-4D0F-9BC0-BE45C5485348}|ViewTree\\ViewTree.csproj|solutionrelative:viewtree\\models\\tree.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,65 +27,38 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "MainFormP.cs",
+              "DocumentMoniker": "C:\\Users\\julia\\source\\repos\\ViewTree\\ViewTree\\MainFormP.cs",
+              "RelativeDocumentMoniker": "ViewTree\\MainFormP.cs",
+              "ToolTip": "C:\\Users\\julia\\source\\repos\\ViewTree\\ViewTree\\MainFormP.cs",
+              "RelativeToolTip": "ViewTree\\MainFormP.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-04T09:42:42.356Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "MainFormP.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435]",
               "DocumentMoniker": "C:\\Users\\julia\\source\\repos\\ViewTree\\ViewTree\\MainFormP.cs",
               "RelativeDocumentMoniker": "ViewTree\\MainFormP.cs",
               "ToolTip": "C:\\Users\\julia\\source\\repos\\ViewTree\\ViewTree\\MainFormP.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435]",
               "RelativeToolTip": "ViewTree\\MainFormP.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-21T18:50:45.064Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PlantForm.cs",
-              "DocumentMoniker": "C:\\Users\\julia\\source\\repos\\ViewTree\\ViewTree\\PlantForm.cs",
-              "RelativeDocumentMoniker": "ViewTree\\PlantForm.cs",
-              "ToolTip": "C:\\Users\\julia\\source\\repos\\ViewTree\\ViewTree\\PlantForm.cs",
-              "RelativeToolTip": "ViewTree\\PlantForm.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAUwBUAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-21T18:36:17.712Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-04T09:42:40.041Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "SpeciesForm.cs",
-              "DocumentMoniker": "C:\\Users\\julia\\source\\repos\\ViewTree\\ViewTree\\SpeciesForm.cs",
-              "RelativeDocumentMoniker": "ViewTree\\SpeciesForm.cs",
-              "ToolTip": "C:\\Users\\julia\\source\\repos\\ViewTree\\ViewTree\\SpeciesForm.cs",
-              "RelativeToolTip": "ViewTree\\SpeciesForm.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAsAAAA",
+              "Title": "Tree.cs",
+              "DocumentMoniker": "C:\\Users\\julia\\source\\repos\\ViewTree\\ViewTree\\Models\\Tree.cs",
+              "RelativeDocumentMoniker": "ViewTree\\Models\\Tree.cs",
+              "ToolTip": "C:\\Users\\julia\\source\\repos\\ViewTree\\ViewTree\\Models\\Tree.cs",
+              "RelativeToolTip": "ViewTree\\Models\\Tree.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-21T18:14:22.854Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "SpeciesForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435]",
-              "DocumentMoniker": "C:\\Users\\julia\\source\\repos\\ViewTree\\ViewTree\\SpeciesForm.cs",
-              "RelativeDocumentMoniker": "ViewTree\\SpeciesForm.cs",
-              "ToolTip": "C:\\Users\\julia\\source\\repos\\ViewTree\\ViewTree\\SpeciesForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435]",
-              "RelativeToolTip": "ViewTree\\SpeciesForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-21T18:14:19.79Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "MainFormP.cs",
-              "DocumentMoniker": "C:\\Users\\julia\\source\\repos\\ViewTree\\ViewTree\\MainFormP.cs",
-              "RelativeDocumentMoniker": "ViewTree\\MainFormP.cs",
-              "ToolTip": "C:\\Users\\julia\\source\\repos\\ViewTree\\ViewTree\\MainFormP.cs",
-              "RelativeToolTip": "ViewTree\\MainFormP.cs",
-              "ViewState": "AQIAAPcAAAAAAAAAAAAAwCMBAAAsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-21T11:05:04.146Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-04T09:26:11.878Z"
             }
           ]
         }

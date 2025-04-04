@@ -5,6 +5,7 @@ namespace ViewTree
     public partial class EditUserForm : Form
     {
         private User user;
+        private bool isPasswordChanging = false;
 
         public EditUserForm(User u)
         {
@@ -14,18 +15,31 @@ namespace ViewTree
             txtUserName.Text = user.Name;
             chkIsAdmin.Checked = user.isAdmin;
             chkIsActive.Checked = user.isActive;
+
+            txtNewPass.TextChanged += (s, e) =>
+            {
+                isPasswordChanging = !string.IsNullOrEmpty(txtNewPass.Text);
+                txtActPass.Enabled = isPasswordChanging;
+            };
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            if (User.GetPasswordHash(txtActPass.Text) != user.Password)
+            if (isPasswordChanging)
             {
-                MessageBox.Show("Incorrect actual password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                if (User.GetPasswordHash(txtActPass.Text) != user.Password)
+                {
+                    MessageBox.Show("Incorrect actual password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (!string.IsNullOrEmpty(txtNewPass.Text))
+                {
+                    user.Password = User.GetPasswordHash(txtNewPass.Text);
+                }
             }
 
             user.Name = txtUserName.Text;
-            user.Password = User.GetPasswordHash(txtNewPass.Text);
             user.isAdmin = chkIsAdmin.Checked;
             user.isActive = chkIsActive.Checked;
 

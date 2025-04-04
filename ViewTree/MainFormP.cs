@@ -12,10 +12,22 @@ namespace ViewTree
             InitializeComponent();
             context = new TreeContext();
 
-            var plantsNode = new TreeNode("Plants");
-            trvPlants.Nodes.Add(plantsNode);
-
             trvPlants.NodeMouseClick += trvData_NodeMouseClick;
+            trvPlants.ItemDrag += trvPlants_ItemDrag;
+            trvPlants.DragEnter += trvPlants_DragEnter;
+            trvPlants.DragDrop += trvPlants_DragDrop;
+            trvPlants.BeforeExpand += trvPlants_BeforeExpand;
+
+            LoadRootNode();
+        }
+
+        private void LoadRootNode()
+        {
+            trvPlants.Nodes.Clear();
+            var rootNode = new TreeNode("Plants");
+            trvPlants.Nodes.Add(rootNode);
+
+            rootNode.Nodes.Add(new TreeNode("Loading..."));
         }
 
         private void LoadData()
@@ -73,7 +85,7 @@ namespace ViewTree
 
         private void trvData_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            if (e.Button == MouseButtons.Right && e.Node != null)
+            if (e.Button == MouseButtons.Right)
             {
                 trvPlants.SelectedNode = e.Node;
                 if (trvPlants.SelectedNode?.Tag is PlantFamily)
@@ -122,6 +134,7 @@ namespace ViewTree
         private void addSpeciesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = new SpeciesForm();
+
             if (form.ShowDialog() == DialogResult.OK)
             {
                 context.PlantSpecies.Add(form.PlantSpecies);
@@ -129,7 +142,7 @@ namespace ViewTree
 
                 var famNode = trvPlants.Nodes[0].Nodes
                     .Cast<TreeNode>()
-                    .FirstOrDefault(node => node.Tag is PlantFamily f && f.FamilyID == form.PlantSpecies.SpeciesID);
+                    .FirstOrDefault(node => node.Tag is PlantFamily f && f.FamilyID == form.PlantSpecies.FamilyID);
 
                 if (famNode != null)
                 {
@@ -152,7 +165,6 @@ namespace ViewTree
                     context.SaveChanges();
                     trvPlants.SelectedNode.Text = form.PlantSpecies.ToString();
 
-                    // Если организация изменилась
                     if (spec.SpeciesID != curSpeciesID)
                     {
                         trvPlants.SelectedNode.Remove();
@@ -191,30 +203,57 @@ namespace ViewTree
 
         private void addPlantToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //var form = new PlantForm();
-            //if (form.ShowDialog() == DialogResult.OK)
-            //{
-            //    context.Plants.Add(form.Pl);
-            //    context.SaveChanges();
+            var form = new PlantForm();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                context.Plants.Add(form.Plant);
+                context.SaveChanges();
 
-            //    var empNode = trvData.Nodes[0].Nodes
-            //        .Cast<TreeNode>()
-            //        .SelectMany(orgNode => orgNode.Nodes.Cast<TreeNode>())
-            //        .FirstOrDefault(node => node.Tag is Employee emp && emp.Id == form.Award.EmployeeId);
+                var specNode = trvPlants.Nodes[0].Nodes
+                    .Cast<TreeNode>()
+                    .SelectMany(fNode => fNode.Nodes.Cast<TreeNode>())
+                    .FirstOrDefault(node => node.Tag is PlantSpecies spec && spec.SpeciesID == form.Plant.SpeciesID);
 
-            //    if (empNode != null)
-            //    {
-            //        // Добавляем награду в узел сотрудника
-            //        var awardNode = new TreeNode(form.Award.ToString()) { Tag = form.Award };
-            //        empNode.Nodes.Add(awardNode);
-            //        empNode.Expand(); // Раскрываем узел сотрудника для отображения новой награды
-            //    }
-            //}
+                if (specNode != null)
+                {
+                    var plantNode = new TreeNode(form.Plant.ToString()) { Tag = form.Plant };
+                    specNode.Nodes.Add(plantNode);
+                    specNode.Expand();
+                }
+            }
         }
 
         private void editPlantToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (trvPlants.SelectedNode?.Tag is Plant plant)
+            {
+                int? originalSpeciesID = plant.SpeciesID;
 
+                var form = new PlantForm(plant);
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    context.SaveChanges();
+                    trvPlants.SelectedNode.Text = form.Plant.ToString();
+
+                    if (plant.SpeciesID != originalSpeciesID)
+                    {
+                        trvPlants.SelectedNode.Remove();
+
+                        var specNode = trvPlants.Nodes[0].Nodes
+                            .Cast<TreeNode>()
+                            .SelectMany(fNode => fNode.Nodes.Cast<TreeNode>())
+                            .FirstOrDefault(node => node.Tag is PlantSpecies spec
+                            && spec.SpeciesID == form.Plant.SpeciesID);
+
+                        if (specNode != null)
+                        {
+                            var plantNode = new TreeNode(form.Plant.PlantName) { Tag = form.Plant };
+                            specNode.Nodes.Add(plantNode);
+                            specNode.Expand();
+                        }
+                    }
+                }
+            }
         }
 
         private void deletePlantToolStripMenuItem_Click(object sender, EventArgs e)
@@ -245,70 +284,93 @@ namespace ViewTree
             var targetNode = trvPlants.GetNodeAt(trvPlants.PointToClient(new Point(e.X, e.Y)));
             var draggedNode = (TreeNode)e.Data.GetData(typeof(TreeNode));
 
-            if (draggedNode != null && targetNode != null)
-            {
-                if (draggedNode.Tag is PlantSpecies spec && targetNode.Tag is PlantFamily family)
-                {
-                    spec.PlantFamily = family;
-                    context.SaveChanges();
+            if (draggedNode == null || targetNode == null) return;
 
-                    draggedNode.Remove();
-                    targetNode.Nodes.Add((TreeNode)draggedNode.Clone());
-
-                    UpdateNode(targetNode);
-                }
-            }
-            else if (draggedNode.Tag is Plant plant && targetNode.Tag is PlantSpecies spec)
+            if (draggedNode.Tag is PlantSpecies spec && targetNode.Tag is PlantFamily family)
             {
-                plant.PlantSpecies = spec;
+                spec.PlantFamily = family;
                 context.SaveChanges();
 
                 draggedNode.Remove();
-                targetNode.Nodes.Add((TreeNode)draggedNode.Clone());
+                var clonedNode = (TreeNode)draggedNode.Clone();
+                targetNode.Nodes.Add(clonedNode);
+                targetNode.Expand();
+            }
+            else if (draggedNode.Tag is Plant plant && targetNode.Tag is PlantSpecies sp)
+            {
+                plant.PlantSpecies = sp;
+                context.SaveChanges();
 
-                UpdateNode(targetNode);
+                draggedNode.Remove();
+                var clonedNode = (TreeNode)draggedNode.Clone();
+                targetNode.Nodes.Add(clonedNode);
+                targetNode.Expand();
             }
         }
 
         private void UpdateNode(TreeNode node)
         {
-            if (node.Tag is PlantSpecies species)
+            if (node.Tag is PlantFamily fam)
             {
+                node.Text = fam.FamilyName;
                 node.Nodes.Clear();
-                foreach (var plant in species.Plants)
+
+                foreach (var spec in fam.PlantSpecies)
                 {
-                    var plantNode = new TreeNode(plant.PlantName) { Tag = plant };
-                    node.Nodes.Add(plantNode);
+                    var specChildNode = new TreeNode(spec.ToString()) { Tag = spec };
+
+                    foreach (var plant in spec.Plants)
+                    {
+                        var plantChildNode = new TreeNode(plant.ToString()) { Tag = plant };
+                        node.Nodes.Add(plantChildNode);
+                    }
+
+                    node.Nodes.Add(specChildNode);
                 }
+            }
+            else if (node.Tag is PlantSpecies spec)
+            {
+                node.Text = spec.SpeciesName;
+                node.Nodes.Clear();
+
+                foreach (var plant in spec.Plants)
+                {
+                    var plantChildNode = new TreeNode(plant.ToString()) { Tag = plant };
+                    node.Nodes.Add(plantChildNode);
+                }
+            }
+            else if (node.Tag is Plant plant)
+            {
+                node.Text = plant.ToString();
             }
         }
 
-        //private void trvPlants_BeforeExpand(object sender, TreeViewCancelEventArgs e)
-        //{
-        //    if (e.Node.Tag is PlantFamily family)
-        //    {
-        //        e.Node.Nodes.Clear();
-        //        var species = context.PlantSpecies.Where(ps => ps.FamilyID == family.FamilyID).ToList();
-        //        foreach (var s in species)
-        //        {
-        //            var speciesNode = new TreeNode(s.SpeciesName) { Tag = s };
-        //            if (s.Plants.Any())
-        //            {
-        //                speciesNode.Nodes.Add(new TreeNode("Loading..."));
-        //            }
-        //            e.Node.Nodes.Add(speciesNode);
-        //        }
-        //    }
-        //    else if (e.Node.Tag is PlantSpecies species)
-        //    {
-        //        e.Node.Nodes.Clear();
-        //        var plants = context.Plants.Where(p => p.SpeciesID == species.SpeciesID).ToList();
-        //        foreach (var p in plants)
-        //        {
-        //            var plantNode = new TreeNode(p.PlantName) { Tag = p };
-        //            e.Node.Nodes.Add(plantNode);
-        //        }
-        //    }
-        //}
+        private void trvPlants_BeforeExpand(object sender, TreeViewCancelEventArgs e)
+        {
+            if (e.Node.Tag is PlantFamily family)
+            {
+                e.Node.Nodes.Clear();
+                var species = context.PlantSpecies.Where(ps => ps.FamilyID == family.FamilyID).ToList();
+                foreach (var s in species)
+                {
+                    var speciesNode = new TreeNode(s.SpeciesName) { Tag = s };
+                    if (s.Plants.Any())
+                    {
+                        speciesNode.Nodes.Add(new TreeNode("Loading..."));
+                    }
+                    e.Node.Nodes.Add(speciesNode);
+                }
+            }
+            else if (e.Node.Tag is PlantSpecies species)
+            {
+                e.Node.Nodes.Clear();
+                var plants = context.Plants.Where(p => p.SpeciesID == species.SpeciesID).ToList();
+                foreach (var p in plants)
+                {
+                    var plantNode = new TreeNode(p.PlantName) { Tag = p };
+                    e.Node.Nodes.Add(plantNode);
+                }
+            }
+        }
     }
 }
